@@ -5,9 +5,15 @@ const DUMMY_DATA =  [
     { id: 'd4', value: 13, region: 'NL'},
 ];
 
-d3.select('div')
-    .selectAll('p')
+const container = d3.select('div')
+    .classed('container', true)
+    .style('border','1px solid red');
+
+const bars = container
+    .selectAll('.bar')
     .data(DUMMY_DATA)
     .enter()
-    .append('p')
-    .text(data => data.region);
+    .append('div')
+    .classed('bar', true)
+    .style('width', '50px')
+    .style('height', data => `${data.value * 12}px`)
